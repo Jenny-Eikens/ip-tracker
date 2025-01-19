@@ -1,21 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kumbh+Sans:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  @apply scroll-smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  min-height: 100%;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  height: auto;
+  min-height: screen;
+}
+
+.result-wrapper {
+  @apply md:border-dark-gray bg-red-200 md:border-l md:pl-5 md:first-of-type:border-none;
+}
+
+.result-header {
+  @apply text-dark-gray mb-1 text-xs font-[500] tracking-wider;
+}
+
+.result {
+  @apply text-v-dark-gray text-xl font-[500];
+}
+
+.attribution a {
+  @apply underline;
 }
