@@ -26,15 +26,15 @@ body {
 }
 
 .result-wrapper {
-  @apply md:border-dark-gray bg-red-200 md:border-l md:pl-5 md:first-of-type:border-none;
+  @apply md:border-l md:border-dark-gray md:border-opacity-45 md:pl-5 md:first-of-type:border-none md:first-of-type:pl-0;
 }
 
 .result-header {
-  @apply text-dark-gray mb-1 text-xs font-[500] tracking-wider;
+  @apply mb-1 text-xs font-[500] tracking-wider text-dark-gray;
 }
 
 .result {
-  @apply text-v-dark-gray text-xl font-[500];
+  @apply text-xl font-[500] text-v-dark-gray;
 }
 
 .attribution a {

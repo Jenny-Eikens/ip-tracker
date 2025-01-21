@@ -4,9 +4,8 @@ import Main from './components/Main'
 /* TODO
 - fix width issues with background-image
 - change name of SearchBar component
-- fix border color
-- fix vertical alignment of results
 - restructure SearchBar component -> h1 should be separate for example
+- fix border color
 */
 
 export default async function Home() {
