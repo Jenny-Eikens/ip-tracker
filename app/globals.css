@@ -26,7 +26,7 @@ body {
 }
 
 .result-wrapper {
-  @apply md:border-l md:border-dark-gray md:border-opacity-45 md:pl-5 md:first-of-type:border-none md:first-of-type:pl-0;
+  @apply md:border-l md:border-dark-gray md:border-opacity-35 md:pl-5 md:first-of-type:border-none md:first-of-type:pl-0;
 }
 
 .result-header {
