@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import dynamic from 'next/dynamic'
 import SearchBar from './SearchBar'
+import IPInfo from './IPInfo'
 import { GET } from '../api/route'
 
 const Main = () => {
@@ -81,17 +82,24 @@ const Main = () => {
     <>
       <Map latitude={lat} longitude={lng} />
 
-      <div className="overlay pointer-events-none fixed inset-0 z-[1000]">
+      <div className="overlay pointer-events-none absolute inset-0 z-[1000]">
         <div className="pointer-events-auto flex flex-col items-center">
-          <SearchBar
-            ipAddress={ip}
-            region={region}
-            city={city}
-            postalCode={postalCode}
-            timezone={timezone}
-            isp={isp}
-            handleSearch={(address: string) => handleSearch(address)}
-          />
+          <div className="wrapper mt-6 flex w-[85vw] max-w-[1100px] flex-col items-center space-y-4 md:mt-8 md:space-y-8">
+            <h1 className="text-2xl font-[500] text-white md:text-3xl">
+              IP Address Tracker
+            </h1>
+
+            <SearchBar handleSearch={handleSearch} />
+
+            <IPInfo
+              ipAddress={ip}
+              region={region}
+              city={city}
+              postalCode={postalCode}
+              timezone={timezone}
+              isp={isp}
+            />
+          </div>
         </div>
       </div>
     </>

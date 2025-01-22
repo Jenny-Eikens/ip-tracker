@@ -28,12 +28,13 @@ const Map = ({ latitude, longitude }: MapProps) => {
 
   return (
     <>
-      <div className="h-[60vh] w-full md:h-[80vh] xl:h-[70vh]">
+      <div className="h-[60vh] w-full md:h-[80vh] xl:h-[70vh]" tabIndex={0}>
         <MapContainer
           center={[latitude, longitude] as [number, number]}
           zoom={15}
           zoomControl={false}
           style={{ height: '100%', width: '100%' }}
+          keyboard={true}
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
