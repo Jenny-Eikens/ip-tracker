@@ -28,7 +28,10 @@ const Map = ({ latitude, longitude }: MapProps) => {
 
   return (
     <>
-      <div className="h-[60vh] w-full md:h-[80vh] xl:h-[70vh]" tabIndex={0}>
+      <div
+        className="h-[60vh] w-full md:h-[80vh] lg:h-[75vh] xl:h-[70vh]"
+        tabIndex={0}
+      >
         <MapContainer
           center={[latitude, longitude] as [number, number]}
           zoom={15}
