@@ -9,6 +9,7 @@ export const metadata = {
 }
 
 export const viewport = {
+  height: 'device-height',
   width: 'device-width',
   initialScale: 1,
 }
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-mobile md:bg-desktop bg-contain bg-no-repeat">
+      <body className="bg-mobile bg-contain bg-no-repeat md:bg-desktop">
         {children}
       </body>
     </html>

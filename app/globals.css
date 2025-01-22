@@ -25,6 +25,10 @@ body {
   min-height: screen;
 }
 
+main {
+  height: calc(env(viewport-height, 100vh));
+}
+
 .result-wrapper {
   @apply md:border-l md:border-dark-gray md:border-opacity-35 md:pl-5 md:first-of-type:border-none md:first-of-type:pl-0;
 }
