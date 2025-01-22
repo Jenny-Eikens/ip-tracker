@@ -19,7 +19,7 @@ const IPInfo = ({
 }: IPInfoProps) => {
   return (
     <>
-      <div className="w-full space-y-3 rounded-xl bg-white p-6 text-center md:flex md:w-auto md:items-start md:justify-start md:space-x-10 md:space-y-0 md:py-9 md:text-left">
+      <div className="md w-full space-y-3 rounded-xl bg-white p-6 text-center md:flex md:w-auto md:items-start md:justify-start md:space-x-10 md:space-y-0 md:p-10 md:text-left">
         <div className="result-wrapper">
           <h1 className="result-header">IP ADDRESS</h1>
           <p className="result">{ipAddress}</p>

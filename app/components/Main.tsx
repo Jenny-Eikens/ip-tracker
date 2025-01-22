@@ -101,7 +101,7 @@ const Main = () => {
 
       <div className="overlay pointer-events-none absolute inset-0 z-[1000]">
         <div className="pointer-events-auto flex flex-col items-center">
-          <div className="wrapper mt-6 flex w-[85vw] max-w-[1100px] flex-col items-center space-y-4 md:mt-8 md:space-y-9">
+          <div className="wrapper mt-6 flex w-[90vw] max-w-[1200px] flex-col items-center space-y-4 md:mt-8 md:space-y-9">
             <h1 className="text-2xl font-[500] text-white md:text-3xl">
               IP Address Tracker
             </h1>
