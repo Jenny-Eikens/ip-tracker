@@ -3,7 +3,12 @@ export async function GET(request: Request) {
   const ipAddress = searchParams.get('ipAddress')
   const domain = searchParams.get('domain')
 
-  const apiKey = 'at_G48npurWzNfjLru1HJ1OIcFYE6THY'
+  const apiKey = process.env.IPIFY_API_KEY
+
+  if (!apiKey) {
+    return new Response('API key is missing', { status: 500 })
+  }
+
   const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}${ipAddress ? `&ipAddress=${ipAddress}` : ''}${domain ? `&domain=${domain}` : ''}`
 
   try {
