@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import dynamic from 'next/dynamic'
@@ -9,6 +9,7 @@ import IPInfo from './IPInfo'
 
 const Main = () => {
   const [ipAddress, setIpAddress] = useState<string>('')
+  const [domain, setDomain] = useState<string>('')
   const [geoData, setGeoData] = useState<any>(null) // eslint-disable-line @typescript-eslint/no-explicit-any
 
   useEffect(() => {
@@ -28,23 +29,27 @@ const Main = () => {
     fetchIpAddress()
   }, [])
 
-  useEffect(() => {
-    if (!ipAddress) return
-
-    const fetchData = async () => {
-      try {
-        const res = await fetch(
-          `/api?ipAddress=${encodeURIComponent(ipAddress)}`,
-        )
-        if (!res.ok) throw new Error('Failed to fetch data')
-        const data = await res.json()
-        setGeoData(data)
-      } catch (error) {
-        console.error('Failed to fetch geo data', error)
+  const fetchData = useCallback(async () => {
+    if (!ipAddress && !domain) return
+    try {
+      const queryParam = domain
+        ? `domain=${encodeURIComponent(domain)}`
+        : `ipAddress=${encodeURIComponent(ipAddress)}`
+      const res = await fetch(`/api?${queryParam}`)
+      if (!res.ok) {
+        alert('Failed to fetch data')
+        throw new Error('Failed to fetch data')
       }
+      const data = await res.json()
+      setGeoData(data)
+    } catch (error) {
+      console.error('Failed to fetch geo data', error)
     }
+  }, [ipAddress, domain])
+
+  useEffect(() => {
     fetchData()
-  }, [ipAddress])
+  }, [fetchData])
 
   if (!geoData || !geoData.location) {
     return (
@@ -66,7 +71,16 @@ const Main = () => {
       alert('Search cannot be empty!')
       return
     }
-    setIpAddress(address)
+
+    const isValidIP = /^(\d{1,3}\.){3}\d{1,3}$/.test(address)
+
+    if (isValidIP) {
+      setIpAddress(address)
+      setDomain('')
+    } else {
+      setDomain(address)
+      setIpAddress('')
+    }
   }
 
   const Map = dynamic(() => import('./Map'), {
