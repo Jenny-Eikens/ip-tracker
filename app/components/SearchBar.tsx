@@ -29,18 +29,18 @@ const SearchBar = ({ handleSearch }: SearchBarProps) => {
   }
   return (
     <>
-      <div className="flex w-full overflow-hidden rounded-xl md:w-[40%]">
+      <div className="flex w-full overflow-hidden rounded-xl md:w-[50%]">
         <input
           type="text"
           id="search"
           name="search"
           placeholder="Search for any IP address or domain"
-          className="w-full px-4 placeholder:text-sm hover:cursor-pointer focus:cursor-text focus:outline-none md:placeholder:text-base"
+          className="w-full p-2 px-4 placeholder:text-sm hover:cursor-pointer focus:cursor-text focus:outline-none md:px-5 md:placeholder:text-base"
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
         />
         <button
-          className="flex h-full items-center bg-v-dark-gray p-5"
+          className="flex h-full items-center bg-black p-5"
           onClick={onSearch}
           aria-label="Begin search"
         >

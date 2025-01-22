@@ -30,11 +30,11 @@ body {
 }
 
 .result-header {
-  @apply mb-1 text-xs font-[500] tracking-wider text-dark-gray;
+  @apply mb-1 text-[0.6rem] font-[700] tracking-wider text-dark-gray md:mb-2 md:text-xs;
 }
 
 .result {
-  @apply text-xl font-[500] text-v-dark-gray;
+  @apply text-lg font-[500] text-v-dark-gray md:text-2xl;
 }
 
 .attribution a {
