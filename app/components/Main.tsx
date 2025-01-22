@@ -6,11 +6,10 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import dynamic from 'next/dynamic'
 import SearchBar from './SearchBar'
 import IPInfo from './IPInfo'
-import { GET } from '../api/route'
 
 const Main = () => {
-  const [ipAddress, setIpAddress] = useState<string | null>('')
-  const [geoData, setGeoData] = useState<any>(null)
+  const [ipAddress, setIpAddress] = useState<string>('')
+  const [geoData, setGeoData] = useState<any>(null) // eslint-disable-line @typescript-eslint/no-explicit-any
 
   useEffect(() => {
     const fetchIpAddress = async () => {
@@ -34,7 +33,11 @@ const Main = () => {
 
     const fetchData = async () => {
       try {
-        const data = await GET(ipAddress)
+        const res = await fetch(
+          `/api?ipAddress=${encodeURIComponent(ipAddress)}`,
+        )
+        if (!res.ok) throw new Error('Failed to fetch data')
+        const data = await res.json()
         setGeoData(data)
       } catch (error) {
         console.error('Failed to fetch geo data', error)
